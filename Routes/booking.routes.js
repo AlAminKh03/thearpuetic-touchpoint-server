@@ -6,5 +6,6 @@ const router = express.Router();
 // router.get("/appointments", appointmentController.getAppointment);
 router.post("/booking", bookingAppointment.postBooking);
 router.get("/booking", verifyJwt, bookingAppointment.getBookings);
+router.get("/booking/payment/:id", bookingAppointment.getPayment);
 
 module.exports = router;

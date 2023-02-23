@@ -2,9 +2,11 @@ const doctorModel = require("../Models/doctors.model");
 
 exports.postDoctor = async (req, res, next) => {
   const body = req.body;
+  console.log(body);
   try {
     const doctors = await doctorModel(body);
-    await doctors.save();
+    doctors.save();
+    console.log(doctors);
     res.status(201).send(doctors);
   } catch (err) {
     res.status(404).send(err);

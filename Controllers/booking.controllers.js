@@ -1,6 +1,6 @@
+const bookingModel = require("../Models/booking.model");
 const BookingModel = require("../Models/booking.model");
 const { verifyJwt } = require("../middleware/Verifyjwt");
-
 
 exports.postBooking = async (req, res, next) => {
   const body = req.body;
@@ -38,5 +38,17 @@ exports.getBookings = async (req, res, next) => {
     res.status(201).send(booking);
   } catch (err) {
     res.staus(404).send(err);
+  }
+};
+
+exports.getPayment = async (req, res, next) => {
+  const id = req.params.id;
+  console.log(id);
+  const filter = { _id: id };
+  try {
+    const result = await bookingModel.findOne(filter);
+    res.status(201).send(result);
+  } catch (err) {
+    console.log(err);
   }
 };
