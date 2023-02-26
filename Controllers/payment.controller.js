@@ -14,3 +14,9 @@ exports.postPayment = async (req, res, next) => {
     clientSecret: paymentIntent.client_secret,
   });
 };
+exports.postPaymentInfo = async (req, res, next) => {
+  const body = req.body;
+  const result = await paymentModel(body);
+  result.save();
+  res.status(201).send(result);
+};
